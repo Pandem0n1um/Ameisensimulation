@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/Users/leonard.kraus/Desktop/Uni/Projekt Web Entwicklung - Eigenes Projekt/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+2321391679.index
+3468314333.index

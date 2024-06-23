@@ -1,0 +1,91 @@
+package simulation;
+
+import java.awt.Color;
+import java.util.Random;
+import java.util.stream.IntStream;
+
+public class Simulation
+{
+	public static boolean run = true;
+	static Random rand1 = new Random();
+	static int numBots;
+	static Bot[] bots;
+	static Painter painter;
+	static final int width = 800;
+	static final int height = 300;
+	public static int sensorLength = 15;
+	public static double turnLeft = 0.25;
+	public static double turnRight = 0.25;
+	public static double angle = 0.2;
+	static final Color botColor = new Color(255, 255, 255);
+	public static double fadeRed = 0.9;
+	public static double fadeGreen = 0.9;
+	public static double fadeBlue = 0.9;
+	static final String startSetup = "Random";
+
+	public static void main(String[]args)
+	{
+		makeSimulation(10000);
+	}
+
+	public static void makeSimulation(int numBotsm)
+	{
+		numBots = numBotsm;
+		bots = new Bot[numBots];
+		for (int i = 0; i < numBotsm; i ++)
+		{
+			
+			double direction = rand1.nextFloat() * Math.PI * 2;
+			double random = rand1.nextFloat() * Math.PI * 2;
+			double random2 = rand1.nextFloat();
+			double xPos;
+			double yPos;
+			xPos = (float)rand1.nextDouble() * Painter.imageWidth;
+			yPos = (float)rand1.nextDouble() * Painter.imageHeight;
+			Bot bot = new Bot(xPos, yPos, direction);
+			bots[i] = bot;
+		}
+		painter = new Painter(bots);
+		painter.paint(bots);
+		runSimulation();
+	}
+	public static void runOneStep()
+	{
+		IntStream.range(0, numBots - 1).parallel().forEach(i ->
+		{
+			bots[i].updatePosition(sensorLength);
+		});
+		painter.update(bots);
+	}
+	public static void runSimulation()
+	{
+		while (true)
+		{
+			long start = System.currentTimeMillis();
+			if (run == true)
+			{
+				runOneStep();
+			}
+			else
+			{
+				try {
+					System.out.println("Waiting...");
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			long end = System.currentTimeMillis();
+			if(33 - (end - start) > 0)
+			{
+				try {
+					Thread.sleep(33 - (end - start));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}

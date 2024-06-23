@@ -1,0 +1,7 @@
+.sliders
+{
+  max-height: 300;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}

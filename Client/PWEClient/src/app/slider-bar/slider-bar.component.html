@@ -1,0 +1,41 @@
+<div class = "sliders">
+  <div>
+    <p>{{names[0]}}</p>
+    <mat-slider  #slider0 min={{min[0]}} max = {{max[0]}} step = {{step[0]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 0)"><input matSliderThumb [(value)]="sensorLength"></mat-slider>
+    {{sensorLength}}
+  </div>
+  <div>
+    <p>{{names[1]}}</p>
+    <mat-slider  #slider1 min={{min[1]}} max = {{max[1]}} step = {{step[1]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 1)"><input matSliderThumb [(value)]="turnRight"></mat-slider>
+    {{turnRight}}
+  </div>
+  <div>
+    <p>{{names[2]}}</p>
+    <mat-slider  #slider2 min={{min[2]}} max = {{max[2]}} step = {{step[2]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 2)"><input matSliderThumb [(value)]="turnLeft"></mat-slider>
+    {{turnLeft}}
+  </div>
+  <div>
+    <p>{{names[3]}}</p>
+    <mat-slider  #slider3 min={{min[3]}} max = {{max[3]}} step = {{step[3]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 3)"><input matSliderThumb [(value)]="sensorAngle"></mat-slider>
+    {{sensorAngle}}
+  </div>
+  <div>
+    <p>{{names[4]}}</p>
+    <mat-slider  #slider4 min={{min[4]}} max = {{max[4]}} step = {{step[4]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 4)"><input matSliderThumb [(value)]="fadeRed"></mat-slider>
+    {{fadeRed}}
+  </div>
+  <div>
+    <p>{{names[5]}}</p>
+    <mat-slider  #slider5 min={{min[5]}} max = {{max[5]}} step = {{step[5]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 5)"><input matSliderThumb [(value)]="fadeGreen"></mat-slider>
+    {{fadeGreen}}
+  </div>
+  <div>
+    <p>{{names[6]}}</p>
+    <mat-slider  #slider6 min={{min[6]}} max = {{max[6]}} step = {{step[6]}} discrete="True" showTickMarks = "True" (input) = "updateSliderNotification($event, 6)"><input matSliderThumb [(value)]="fadeBlue"></mat-slider>
+    {{fadeBlue}}
+  </div>
+  <div>
+    <p>{{names[7]}}</p>
+    <mat-slide-toggle (change)="updateSliderNotification($event, 7)" [checked]="true"></mat-slide-toggle>
+  </div>
+</div>
