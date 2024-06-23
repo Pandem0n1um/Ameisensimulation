@@ -24,18 +24,18 @@ Die Anforderungen an die Schnittstelle sind im Großen und Ganzen recht gering. 
 Bei den Parameteränderungen kam mir sofort JSON in den Sinn, da die relevanten Informationen dafür der Parametername und der neue Wert sind und Zahlen und Strings sich sehr leicht in JSON speichern lassen. Die Daten der Simulation (= das Bild) wurden in der alten Simulation ein einem 3d-Array gespeichert und anschließend zum Anzeigen in ein BufferedImage umgewandelt. Es wäre möglich für das Bild nur das Array zu senden, um dann im Frontend daraus das Bild herzustellen. Da aber das Frontend primär zum Anzeigen der Daten zuständig ist und das Bild auf dem Server bereits berechnet wurde, habe ich mich dazu entscheiden, das fertige Bild zu schicken. Eine kurze Recherche hat ergeben, dass sich mit Hilfe der Base64 Kodierung Bilder im ASCII Format darstellen lassen. Dies kann dann über die Schnittstelle verschickt werden, von Angular gelesen und als Bild angezeigt werden.
 Da die Base64 Repräsentation der Bilder Text sind und JSON dies unterstützt, habe ich meine ganze Schnittstelle mit JSON implementiert. Die Schnittstelle sieht damit wie folgt aus (Implementierung im Client):
 
-'''typescript
+```typescript
 export interface ImageInterface{
   image: string;
 }
-'''
+```
 
-'''typescript
+```typescript
 export interface ParameterInterface{
   parameter: string;
   value: number;
 }
-'''
+```
 ## Implementierung des Servers
 Die Implementierung des Servers lässt sich in zwei Schritte einteilen:
 ### Umschreiben der Simulation
